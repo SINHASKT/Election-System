@@ -1,36 +1,138 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Candidate Registration</title>
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>
 
-<link href="form_style.css" rel="stylesheet" type="text/css" />
+<?php
+session_start();
+$nameErr="";
+$ageErr="";
+$phnoErr="";
+$counter=0;
+function validationfun(){
+	$name = $_POST["Name"];
+	if (!preg_match("/^[a-zA-Z ]*$/",$name))
+  		$GLOBALS['nameErr'] = "wrong name format";
+  	else
+  		$GLOBALS['counter']=$GLOBALS['counter']+1;
+}
+
+function validationage(){
+	$age = $_POST["ID"];
+	if (!preg_match("/^[a-zA-Z ]*$/",$name))
+  		$GLOBALS['nameErr'] = "wrong name format";
+  	else
+  		$GLOBALS['counter']=$GLOBALS['counter']+1;
+}
+
+function validationphno(){
+	$phno = $_POST["Area"];
+	if (!preg_match("/^[a-zA-Z ]*$/",$name))
+  		$GLOBALS['nameErr'] = "wrong name format";
+  	else
+  		$GLOBALS['counter']=$GLOBALS['counter']+1;
+}
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+	if(empty($_POST["Name"]))
+		$GLOBALS['nameErr'] = "Name Required";
+	else
+		validationfun();
+
+	if(empty($_POST["ID"]))
+		$GLOBALS['ageErr'] = "Age Required";
+	else
+		validationage();
+
+	if(empty($_POST["Area"]))
+		$GLOBALS['phnoErr'] = "Phone Number Required ";
+	else
+		validationphno();
+?>
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h3>Welcome Candidate</h3>
-<form action="insert.php" method="post" class="dark-matter">
-    <h1>Registration Form 
-        <span>Please fill all the texts in the fields.</span>
-    </h1>
-    <label>
-        <span>Your Name :</span>
-        <input id="Name" type="text" name="Name" placeholder="Your Full Name" />
-    </label>
-    
-    <label>
-        <span>Your ID :</span>
-        <input id="ID" type="text" name="ID" placeholder="Your Candidate ID" />
-    </label>
-    <label>
-        <span>Party :</span>
-        <input id="Party" type="text" name="Party" placeholder="Your Party" />
-    </label>    
-    <label>
-        <span>Area :</span>
-        <input id="Area" type="text" name="Area" placeholder="Your Area" />
-    </label> 
-     <label>
-        <span>&nbsp;</span> 
-        <input type="submit" class="button" value="Send" /> 
-    </label>    
+          <!-- LOGIN MODULE -->
+        <div class="login">
+            <div class="wrap">
+                <!-- TOGGLE -->
+                <div id="toggle-wrap">
+                    <div id="toggle-terms">
+                        <div id="cross">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- SLIDER -->
+                <div class="content">
+                    <!-- LOGO -->
+                    <div class="logo">
+                        <a href="#"><img src="http://res.cloudinary.com/dpcloudinary/image/upload/v1506186248/logo.png" alt=""></a>
+                    </div>
+                    <!-- SLIDESHOW -->
+                    <div id="slideshow">
+                        <div class="one">
+                            <h2><span>CREATOR</span></h2>
+                            <p><p>#SANKET<br>
+                                #ACHINTYA<br>
+                                #ANKIT<br></p></p>
+                        </div>
+                        <div class="two">
+                            <h2><span>CANDIDATES</span></h2>
+                            <p>CAND_1<br>
+                                CAND_2<br>
+                                CAND_3<br></p>
+                        </div>
+                        <div class="three">
+                            <h2><span>GROUPS</span></h2>
+                            <p>Create your own groups and connect with others that share your interests</p>
+                        </div>
+                        <div class="four">
+                            <h2><span>SHARING</span></h2>
+                            <p>Share your works and knowledge with the community on the public showcase section</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- LOGIN FORM -->
+                <div class="user">
+
+                    <div class="form-wrap">
+                        <!-- TABS -->
+                    	<div class="tabs">
+                            
+                    		<h3 class="signup-tab"><a class="sign-up" href="#signup-tab-content"><span>Sign Up</span></a></h3>
+                    	</div>
+                        <!-- TABS <CONTENT></CONTENT>T -->
+                    	<div class="tabs-content">
+                            <!-- TABS CONTENT LOGIN -->
+                    		<div id="login-tab-content" class="active">
+
+<form action="insert.php" method="post">
+
+<input type="text" class="input" name="Name" placeholder="Name"><span class="error"> <?php echo $nameErr?></span>
+<input type="text" class="input" name="Number" placeholder="Phone"><span class="error"> <?php echo $ageErr?></span>
+<input type="name" class="input" name="Party" placeholder="Party">
+<input type="name" class="input" name="Area" placeholder="Area"><span class="error"> <?php echo $phnoErr;?></span>
+<input type="Submit"  value="Submit"><br>
 </form>
+                    		</div>
+                    	</div>
+                	</div>
+                </div>
+            </div>
+        </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script  src="js/index.js"></script>
+</body>
+</html>
+
+
